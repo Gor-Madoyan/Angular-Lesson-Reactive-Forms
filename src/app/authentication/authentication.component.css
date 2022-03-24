@@ -1,0 +1,24 @@
+.btns a  {
+  display: inline-block;
+  background-color: darkcyan;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.btn-registration {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.btn-login {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.btns a:hover {
+  background-color: #0c6d59;
+}
+.btn-registration:hover {
+  background-color: #6b7171;
+}

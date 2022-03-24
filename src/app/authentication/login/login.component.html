@@ -1,0 +1,61 @@
+<form action="  " (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+  <h2>Login Your Page</h2>
+  <div>
+    <div>
+      <label>Email</label>
+      <input class="inpAuth" type="email" placeholder="Enter Email" name="email" formControlName="email">
+    </div>
+    <div class="auth-errorMessage" *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+      <small>Please enter valid email address.</small>
+    </div>
+  </div>
+  <div>
+    <label>Password</label>
+    <input class="inpAuth" placeholder="Enter Password" formControlName="password">
+    <div class="auth-errorMessage" *ngIf="!loginForm?.get('password')?.valid && loginForm?.get('password')?.touched">
+      <small class="auth-errorMessage" *ngIf="password?.hasError('required')">Password is required</small>
+      <small class="auth-errorMessage" *ngIf="password?.hasError('minlength')">Password min Length must be 5.</small>
+      <small class="auth-errorMessage"
+             *ngIf="!password?.hasError('minlength') && password?.hasError('passwordStrength')">
+        Your password must have lower case, upper case and numeric characters.
+      </small>
+    </div>
+
+  </div>
+
+  <div formGroupName="address">
+    <div>Nested FormGroup</div>
+    <div>
+      <label>City</label>
+      <input class="auth-errorMessage" placeholder="city" type="text" class="form-control" name="city"
+             formControlName="city">
+    </div>
+    <div *ngIf="!city?.valid && city?.touched">
+      <div class="auth-errorMessage">please write correct city name without speacing</div>
+    </div>
+    <div>
+      <label>Street</label>
+      <input placeholder="state" type="text" class="form-control" name="state" formControlName="street">
+    </div>
+  </div>
+
+  <div>
+    <input type="text" placeholder="Start Date" formControlName="startDate">
+  </div>
+  <div>
+  <input type="text" placeholder="End Date" formControlName="endDate"></div>
+
+  <h3>FormArray</h3>
+  <div formArrayName="skillsArr">
+    <div *ngFor="let skill of skills?.controls; let i=index">
+      <div [formGroupName]="i">
+        <input type="text" placeholder="skills" formControlName="personalSkills">
+        <span class="removeSkills" (click)="removeSkill(i)">x</span>
+
+      </div>
+    </div>
+  </div>
+    <button [disabled]="!loginForm.valid" type="submit">Sign In</button>
+    <button (click)="setDefaultValue()">Fill all fildes</button>
+    <button (click)="onAddSkills()">Add skills</button>
+</form>

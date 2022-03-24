@@ -1,0 +1,39 @@
+.auth-errorMessage {
+  animation-name: requirment;
+  animation-duration: 0.5s;
+  text-align: left;
+  color: red;
+}
+
+.auth-errorMessage small {
+  font-size: 13px;
+}
+
+.all-fields-invalid {
+  /*margin: 10px 0 0;*/
+  text-align: center;
+}
+
+@keyframes requirment {
+  from {
+    transform: translateY(15px);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.removeSkills {
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 18px;
+}
