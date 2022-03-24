@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {filter, switchMap} from "rxjs";
+import {filter, Observable, switchMap} from "rxjs";
 import {createPasswordStrengthValidator} from '../customValidation/passwordStrengthValidator'
 import {compareStartEndDates} from '../customValidation/compareDates'
 
@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
 
     //Chechk values for single FormControler.
 
-    // this.password?.valueChanges.pipe(
-    //   switchMap( (val) => <any>this.password?.statusChanges.pipe(
-    //     filter(() => val.length > 3)
-    //   ))
-    // ).subscribe(console.log)
+    this.password?.valueChanges.pipe(
+      switchMap( (val) => <Observable<any>>this.password?.statusChanges.pipe(
+        filter(() => val.length > 3)
+      ))
+    ).subscribe(console.log)
 
     //Check status changes
 
